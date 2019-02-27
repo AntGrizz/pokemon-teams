@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function init() {
-  fetchPokemon();
+  fetchTrainers();
 }
-function fetchPokemon() {
+function fetchTrainers() {
   fetch('http://localhost:3000/trainers')
     .then(res => res.json())
     .then(json => json.forEach(trainer => renderTrainers(trainer)));
@@ -21,7 +21,7 @@ function renderTrainers(trainer) {
   trainerCard.dataset.nameId = trainer.id;
   addPokemonBtn.dataset.buttonid = trainer.id;
   pokemonUl.dataset.ulId = trainer.id;
-
+  debugger;
   addPokemonBtn.addEventListener('click', trainer => {
     console.log(trainer);
   });
@@ -51,8 +51,10 @@ function addPokemonEventListener(trainer) {
   });
 }
 
-function deletePokemon(releasePokemon) {
-  debugger;
-  releasePokemon.remove();
-  fetch(`http://localhost:3000/pokemons/${releasePokemon.id}`);
-}
+// function deletePokemon(releasePokemon) {
+//   debugger;
+//   releasePokemon.remove();
+//   fetch(`http://localhost:3000/pokemons/${releasePokemon.id}`, {
+//     method: 'DELETE'
+//   });
+// }
